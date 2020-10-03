@@ -1,0 +1,14 @@
+.playerBox {
+  box-sizing: border-box;
+  border: 1px solid #000000;
+  width: 200px;
+  margin-right: 20px;
+}
+
+.isGameOver {
+  background-color: lightgray;
+}
+
+.isTurn {
+  background-color: lightpink;
+}
