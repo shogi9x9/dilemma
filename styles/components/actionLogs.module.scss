@@ -1,0 +1,11 @@
+.actionLogs {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px 10px;
+  height: 100vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  position: absolute;
+}

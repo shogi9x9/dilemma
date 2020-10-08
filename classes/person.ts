@@ -1,9 +1,8 @@
-import { PassThrough } from 'stream';
 import Player from './player';
 
 export default class Person extends Player {
+  name: String;
   private dice_num: Number;
-  private name: String;
   private position: Number;
 
   constructor(name: String, dice_num: Number) {
@@ -38,6 +37,19 @@ export default class Person extends Player {
     }
   }
 
+  receive_dice(dice_num) {
+    this.dice_num += dice_num
+  }
+
+  pass_dice() {
+    this.dice_num -= 1
+    return 1
+  }
+
+  is_gameover() {
+    return this.dice_num <= 0;
+  }
+
   toString() {
     return `name: ${this.name}\n dice_num: ${this.dice_num}\n position: ${this.position}`
   }
@@ -48,9 +60,5 @@ export default class Person extends Player {
 
   private get_dice_num() {
     return this.dice_num;
-  }
-
-  private is_gameover() {
-    return this.dice_num <= 0;
   }
 }
