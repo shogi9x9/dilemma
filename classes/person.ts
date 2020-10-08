@@ -1,10 +1,10 @@
 import Player from './player';
 
 export default class Person extends Player {
-  private dice_num: Number;
-  private position: Number;
+  private dice_num: number;
+  private position: number;
 
-  constructor(name: String, dice_num: Number) {
+  constructor(name: string, dice_num: number) {
     super();
     this.name = name;
     this.dice_num = dice_num;
