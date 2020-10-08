@@ -53,11 +53,11 @@ export default class Person extends Player {
     return `name: ${this.name}\n dice_num: ${this.dice_num}\n position: ${this.position}`
   }
 
-  private get_position() {
+  get_position() {
     return this.position;
   }
 
-  private get_dice_num() {
+  get_dice_num() {
     return this.dice_num;
   }
 }
