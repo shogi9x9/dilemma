@@ -1,7 +1,6 @@
 import Player from './player';
 
 export default class Person extends Player {
-  name: String;
   private dice_num: Number;
   private position: Number;
 
