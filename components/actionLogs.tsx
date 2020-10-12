@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import style from '../styles/components/actionLogs.module.scss';
+import style from '../styles/components/persona.module.scss';
+import logStyle from '../styles/components/actionLogs.module.scss'
 
 const ActionLogs = ({ actionLogs }) => {
   const logsEndRef = useRef(null)
@@ -11,14 +12,24 @@ const ActionLogs = ({ actionLogs }) => {
   useEffect(scrollToBottom, [actionLogs]);
 
   return (
-    <div className={style.actionLogs}>
-      {
-        actionLogs.map((log, index) => {
-          return (
-            <p key={`log_${index}`}>{`${index + 1}`}: {log}</p>
-          )
-        })
-      }
+    <div className={logStyle.actionLogs}>
+      {actionLogs.map((log, index) => {
+        return (
+          <div className={style.messageWindow}>
+            <div className={style.messageArea}>
+              <div className={style.content}>
+                <div className={style.arrowWhite}></div>
+                <div className={style.arrowBlack}></div>
+                <div className={style.backgroundWhite}></div>
+                <div className={style.backgroundBlack}></div>
+                <div className={style.textArea}>
+                  <div key={`log_${index}`}>{`${index + 1}`}: {log}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )
+      })}
       <div ref={logsEndRef} />
     </div>
   )

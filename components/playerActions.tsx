@@ -56,7 +56,9 @@ const PlayerActions = (props) => {
           break
         case Actions.Teaming:
           curr_player.askForTeaming()
+          props.setCurrMode(1)
           logs.push(`${curr_player.name}がチームへの参加を依頼中です`)
+          return
           break
       }
     } else {
@@ -74,13 +76,21 @@ const PlayerActions = (props) => {
     }
   }
 
-  return (
-    <div className={style.actionBtnBox}>
-      <button className={style.actionBtn} onClick={() => {updateIndex(Actions.Throw_dice)}}>サイコロを振る</button>
-      <button className={style.actionBtn} onClick={() => {updateIndex(Actions.Stay)}}>現在の位置に留まる</button>
-      <button className={style.actionBtn} onClick={() => {updateIndex(Actions.Teaming)}}>チームへの参加を依頼する</button>
-    </div>
-  )
+  if (props.curr_mode === 0) {
+    return (
+      <div className={style.actionBtnBox}>
+        <button className={style.actionBtn} onClick={() => {updateIndex(Actions.Throw_dice)}}>サイコロを振る</button>
+        <button className={style.actionBtn} onClick={() => {updateIndex(Actions.Stay)}}>現在の位置に留まる</button>
+        <button className={style.actionBtn} onClick={() => {updateIndex(Actions.Teaming)}}>チームへの参加を依頼する</button>
+      </div>
+    )
+  } else {
+    return (
+      <div className={style.actionBtnBox}>
+        Playerを選択してください
+      </div>
+    )
+  }
 }
 
 export default PlayerActions
