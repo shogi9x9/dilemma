@@ -3,7 +3,6 @@ import PlayerActionsComponent from '../../components/playerActions'
 import ActionLogs from '../../components/actionLogs';
 import Person from '../../classes/person';
 import style from '../../styles/pages/games.module.scss';
-import waveStyle from '../../styles/components/wave.module.scss'
 import {useState} from 'react';
 import dynamic from 'next/dynamic'
 const Block = dynamic(() => import("../../components/block"), {

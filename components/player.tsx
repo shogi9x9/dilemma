@@ -27,10 +27,17 @@ const PlayerComponent = (props) => {
   if (props.curr_mode === 0) {
     return (
       <div className={playerBoxClass}>
-        <p>名前: {props.name}</p>
-        <p>サイコロ残数: {props.dice_num}</p>
-        <p>現在位置: {props.position}</p>
-        <p>ゴールまで残り: {props.goal - props.position}マス</p>
+        <div className={style.playerInfo}>
+          <p className={style.playerInfo__text}>{props.name}</p>
+          <p className={style.playerInfo__text}>
+            <span><img src='square.png' className={style.playerInfo__dice}/></span>
+            <span className={style.playerInfo__diceNum}>× {props.dice_num}</span>
+          </p>
+        </div>
+        <div className={style.playerInfo}>
+          <p className={style.playerInfo__text}>位置: {props.position}</p>
+          <p className={style.playerInfo__text}>ゴール: {props.goal - props.position}</p>
+        </div>
       </div>
     )
   } else {

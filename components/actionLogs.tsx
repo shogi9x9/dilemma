@@ -15,7 +15,7 @@ const ActionLogs = ({ actionLogs }) => {
     <div className={logStyle.actionLogs}>
       {actionLogs.map((log, index) => {
         return (
-          <div className={style.messageWindow}>
+          <div className={style.messageWindow} key={`log_${index}`}>
             <div className={style.messageArea}>
               <div className={style.content}>
                 <div className={style.arrowWhite}></div>

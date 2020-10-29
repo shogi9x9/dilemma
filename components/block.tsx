@@ -1,16 +1,46 @@
 import style from '../styles/components/block.module.scss';
-import dynamic from "next/dynamic";
 
 const Block = (props) => {
-    const radian = props.position_id * 96 / 360
-    const left = (window.innerWidth - 300) / 2 + Math.sin(radian) * 200
-    const blockStyle = {
-      marginLeft: left - 50
+    const blockSize = 60;
+    const rowNum = 18;
+    const midHeight = 2;
+
+    const { position_id } = props
+    const quotient = Math.floor(position_id / (rowNum + midHeight))
+    const remain = position_id % (rowNum + midHeight)
+    let topPos = 0
+    let leftPos = 0
+    const midAreas = []
+    for (let i = rowNum; i < rowNum + midHeight; i++) {
+      midAreas.push(i)
+    }
+    if (midAreas.includes(remain)) {
+      // rowとrowの中間
+      topPos = quotient * (blockSize * (midHeight + 1)) + (remain - rowNum + 1) * blockSize
+      if (quotient % 2 == 0) {
+        leftPos = (rowNum - 1) * blockSize
+      }
+    } else {
+      topPos = quotient * (blockSize * (midHeight + 1))
+      if (quotient % 2 == 0) {
+        leftPos = remain * blockSize
+      } else {
+        leftPos = blockSize * (rowNum - 1 - remain)
+      }
+    }
+
+    const blockPos = {
+      top: `${topPos}px`,
+      left: `${leftPos}px`,
+    }
+
+    const blockSizeStyle = {
+      height: `${blockSize}px`
     }
 
     return (
-      <div className={style.block} style={blockStyle}>
-        <img src='pentagon.svg'/>
+      <div className={style.blockBox} style={blockPos} data-key={position_id}>
+        <img src='square.svg' style={blockSizeStyle}/>
       </div>
     )
 }
