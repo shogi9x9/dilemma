@@ -1,48 +1,46 @@
 import style from '../styles/components/block.module.scss';
+import getBlockPosition from '../modules/blocks/blockPositionCalculatorModule';
 
 const Block = (props) => {
-    const blockSize = 60;
-    const rowNum = 18;
-    const midHeight = 2;
+  const { blockSize, rowNum, midHeight, position_id } = props
+  const [topPos, leftPos] = getBlockPosition(blockSize, rowNum, midHeight, position_id)
 
-    const { position_id } = props
-    const quotient = Math.floor(position_id / (rowNum + midHeight))
-    const remain = position_id % (rowNum + midHeight)
-    let topPos = 0
-    let leftPos = 0
-    const midAreas = []
-    for (let i = rowNum; i < rowNum + midHeight; i++) {
-      midAreas.push(i)
-    }
-    if (midAreas.includes(remain)) {
-      // rowとrowの中間
-      topPos = quotient * (blockSize * (midHeight + 1)) + (remain - rowNum + 1) * blockSize
-      if (quotient % 2 == 0) {
-        leftPos = (rowNum - 1) * blockSize
-      }
-    } else {
-      topPos = quotient * (blockSize * (midHeight + 1))
-      if (quotient % 2 == 0) {
-        leftPos = remain * blockSize
-      } else {
-        leftPos = blockSize * (rowNum - 1 - remain)
-      }
+  const blockPos = {
+    top: `${topPos}px`,
+    left: `${leftPos}px`,
+  }
+
+  let blockNumPos = {}
+  if (position_id + 1 < 10) {
+    blockNumPos = {
+      top: `${topPos + 17}px`,
+      left: `${leftPos + 24}px`,
     }
 
-    const blockPos = {
-      top: `${topPos}px`,
-      left: `${leftPos}px`,
+  } else if (position_id + 1 < 100) {
+    blockNumPos = {
+      top: `${topPos + 17}px`,
+      left: `${leftPos + 18}px`,
     }
-
-    const blockSizeStyle = {
-      height: `${blockSize}px`
+  } else {
+    blockNumPos = {
+      top: `${topPos + 17}px`,
+      left: `${leftPos + 12}px`,
     }
+  }
 
-    return (
+  const blockSizeStyle = {
+    width: `${blockSize}px`
+  }
+
+  return (
+    <div>
       <div className={style.blockBox} style={blockPos} data-key={position_id}>
-        <img src='square.svg' style={blockSizeStyle}/>
+        <img src='circle.svg' className={`js-pos${position_id}`} style={blockSizeStyle}/>
       </div>
-    )
+      <span className={style.blockId} style={blockNumPos}>{position_id}</span>
+    </div>
+  )
 }
 
 export default Block;

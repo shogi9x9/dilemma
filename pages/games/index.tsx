@@ -9,13 +9,18 @@ const Block = dynamic(() => import("../../components/block"), {
   ssr: false,
 });
 
+const PlayerIcon = dynamic(() => import('../../components/playerIcon'), {ssr: false})
+
 const Game = () => {
   const goal = 250;
   const [actionLogs, setActionLogs] = useState(['ゲームを開始します'])
   const [players, setPlayers] = useState(initialize_players(5));
   const [curr_index, setIndex] = useState(0);
   const [curr_mode, setCurrMode] = useState(0);
-  const field = initialize_field(goal);
+  const blockSize = 60;
+  const rowNum = 15;
+  const midHeight = 2;
+  const field = initialize_field(goal, blockSize, rowNum, midHeight);
 
   return (
     <>
@@ -41,6 +46,9 @@ const Game = () => {
       </div>
       <div className={style.fieldBox}>
         {field}
+        <PlayerIcon curr_pos={players[0].getPastTwoPos()[0]}
+        target_pos={players[0].getPastTwoPos()[1]} blockSize={blockSize}
+        rowNum={rowNum} midHeight={midHeight} />
       </div>
     </>
   )
@@ -54,10 +62,11 @@ function initialize_players(player_num) {
   return players
 }
 
-function initialize_field(field_size) {
+function initialize_field(field_size, blockSize, rowNum, midHeight) {
   const field = []
   for (let i = 0; i < field_size; i++) {
-    field.push(<Block key={i} position_id={i}/>)
+    field.push(<Block key={i} position_id={i} blockSize={blockSize}
+    rowNum={rowNum} midHeight={midHeight} />)
   }
   return field
 }

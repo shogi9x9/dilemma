@@ -3,12 +3,14 @@ import Player from './player';
 export default class Person extends Player {
   private dice_num: number;
   private position: number;
+  private positions: number[];
 
   constructor(name: string, dice_num: number) {
     super();
     this.name = name;
     this.dice_num = dice_num;
     this.position = 0
+    this.positions = [0, 0]
   }
 
   throw_dice() {
@@ -18,9 +20,14 @@ export default class Person extends Player {
         dice_vals.push(Math.floor(Math.random() * Math.floor(6)) + 1)
       }
       this.position += dice_vals.reduce((a,x) => a += x, 0);
+      this.positions.push(this.position)
       this.dice_num -= 1
     }
     return dice_vals;
+  }
+
+  getPastTwoPos() {
+    return this.positions.slice(-2)
   }
 
   stay() {}

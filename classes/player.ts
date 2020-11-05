@@ -10,4 +10,5 @@ export default abstract class Player {
   abstract pass_dice();
   abstract askForTeaming();
   abstract stay();
+  abstract getPastTwoPos();
 }
