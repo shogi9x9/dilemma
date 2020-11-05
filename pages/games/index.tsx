@@ -46,9 +46,16 @@ const Game = () => {
       </div>
       <div className={style.fieldBox}>
         {field}
-        <PlayerIcon curr_pos={players[0].getPastTwoPos()[0]}
-        target_pos={players[0].getPastTwoPos()[1]} blockSize={blockSize}
-        rowNum={rowNum} midHeight={midHeight} />
+        {
+          players.map((player, index) => {
+            const [curr_pos, target_pos] = player.getPastTwoPos()
+            return (
+              <PlayerIcon key={`playerIcon${index}`} curr_pos={curr_pos}
+              target_pos={target_pos} blockSize={blockSize}
+              rowNum={rowNum} midHeight={midHeight} />
+            )
+          })
+        }
       </div>
     </>
   )

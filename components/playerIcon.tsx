@@ -22,8 +22,6 @@ const playerIcon = (props) => {
       if (curr_pos < target_pos) {
         curr_pos++;
         const pad = 10;
-        console.log(curr_pos)
-        console.log(target_pos)
         const [topPos, leftPos] = getBlockPosition(blockSize, rowNum, midHeight, curr_pos)
         const newPos = {
           top: `${topPos + pad}px`,
