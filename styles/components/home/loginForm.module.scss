@@ -10,6 +10,9 @@
   margin: 0 auto 20px auto;
   text-align: center;
   color: #ffffff;
+  &:nth-of-type(2) {
+    margin-top: 20px;
+  }
 }
 
 .inputContainer {
@@ -50,6 +53,8 @@
   position: relative;
   height: 70px;
   margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .button {
@@ -79,4 +84,9 @@
   left: 50%;
   transform: translateX(-50%) skewX(170deg);
   box-shadow: 10px 20px 70px rgb(1, 41, 56);
+}
+
+.buttonBox {
+  width: 200px;
+  position: relative;
 }
