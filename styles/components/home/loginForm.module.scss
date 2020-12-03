@@ -1,0 +1,82 @@
+.loginForm {
+  position: absolute;
+  width: 600px;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.title {
+  margin: 0 auto 20px auto;
+  text-align: center;
+  color: #ffffff;
+}
+
+.inputContainer {
+  position: relative;
+  height: 70px;
+}
+
+.inputBackGround {
+  height: 70px;
+  border-radius: 3px;
+  width: 600px;
+  font-size: 26px;
+  padding: 15px 26px;
+  border: rgba(63, 76, 119, 1);
+  background-color: #ffffff;
+  transform: skewX(170deg);
+  position: absolute;
+  z-index: 1;
+}
+
+.input {
+  height: 70px;
+  border-radius: 10px;
+  width: 600px;
+  font-size: 26px;
+  padding: 15px 30px;
+  background-color: transparent;
+  border: transparent;
+  position: absolute;
+  text-align: center;
+  z-index: 1;
+  &:focus {
+    outline: none;
+  }
+}
+
+.buttonContainer {
+  position: relative;
+  height: 70px;
+  margin-top: 30px;
+}
+
+.button {
+  height: 40px;
+  border-radius: 3px;
+  width: 200px;
+  font-size: 20px;
+  padding: 5px;
+  border: transparent;
+  background-color: transparent;
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.buttonBackGround {
+  height: 40px;
+  border-radius: 3px;
+  width: 200px;
+  font-size: 20px;
+  padding: 10px;
+  border: rgba(63, 76, 119, 1);
+  background-color: #ffffff;
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) skewX(170deg);
+  box-shadow: 10px 20px 70px rgb(1, 41, 56);
+}
